@@ -1,0 +1,25 @@
+@mixin border-1px($color, $width:100%) {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: $width;
+        border-top: 1px solid $color;
+        content: '';
+    }
+}
+
+$red:rgb(240, 20, 20);
+@mixin color($css, $color) {
+    #{$css}: $color;
+}
+
+@mixin bg-img($url) {
+    background: url($url + '@2x.png') no-repeat center/cover;
+    @at-root & {
+        @media (min-device-pixel-ratio: 3) {
+            background-image: url($url + '@3x.png') no-repeat center/cover;
+        }
+    }
+}
